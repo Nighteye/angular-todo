@@ -4,12 +4,14 @@ Ce projet est une liste de tâches réalisée dans le cadre de mon apprentissage
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
 
-## Angular CLI installation
+## Installation
 
-To install the Angular CLI globally, run:
+To install the project, run:
 
 ```bash
-npm install -g @angular/cli
+git clone https://github.com/Nighteye/angular-todo.git
+cd angular-todo/
+npm install
 ```
 
 ## Development server
