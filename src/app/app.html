@@ -1,20 +1,51 @@
 <main class="main">
   <h1>{{ componentTitle }}</h1>
-  <label for="addItemInput">What would you like to do today ?</label>
+  <label for="addItemInput">Que souhaites-tu faire aujourd'hui ?</label>
 
   <input
     #newItem
-    placeholder="add an item"
+    placeholder="Ajouter une tâche"
     (keyup.enter)="addItem(newItem.value); newItem.value = ''"
     class="lg-text-input"
     id="addItemInput"
   />
 
-  <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  <button class="btn-primary" (click)="addItem(newItem.value)">Ajouter</button>
+
+  <!-- Bouton qui au clic montre toutes les tâches, celles à faire ou faites -->
+  <div class="btn-wrapper">
+    <button
+      class="btn btn-menu"
+      [class.active]="filter === 'all'"
+      (click)="filter = 'all'">
+      Tout
+    </button>
+    
+    <button
+      class="btn btn-menu"
+      [class.active]="filter === 'active'"
+      (click)="filter = 'active'">
+      À faire
+    </button>
+    
+    <button
+      class="btn btn-menu"
+      [class.active]="filter === 'done'"
+      (click)="filter = 'done'">
+      Fait
+    </button>
+  </div>
+
+  <h2>
+    {{items.length}}
+    <span>@if(items.length === 1) {tâche} @else {tâches}</span>
+  </h2>
 
   <ul>
     @for(item of items; track item.description) {
-      <li>{{ item.description }}</li>
+      <li>
+        <app-item (remove)="remove(item)" [item]="item"></app-item>        
+      </li>
     }
   </ul>
 </main>
